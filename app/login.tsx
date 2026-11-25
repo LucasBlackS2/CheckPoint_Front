@@ -34,7 +34,7 @@ export default function Login() {
     <SafeAreaView style={estilos.tela}>
       <KeyboardAvoidingView behavior={Platform.OS === "ios" ? "padding" : undefined} style={estilos.conteudo}>
         <View style={estilos.cabecalho}>
-          <Text style={estilos.logo}>CheckPoint</Text>
+          <Text style={estilos.logo}>Right Point</Text>
           <Text style={estilos.subtitulo}>Ponto eletrônico do estágio</Text>
         </View>
 

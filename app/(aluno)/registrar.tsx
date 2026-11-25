@@ -61,7 +61,7 @@ export default function RegistrarPonto() {
   function aoLerQr(conteudo: string) {
     if (qrLido.current) return;
     if (!PREFIXOS_QR.some((prefixo) => conteudo.startsWith(prefixo))) {
-      setAviso("Este QR Code não é do CheckPoint. Use o QR Code do local ou o da tela do professor.");
+      setAviso("Este QR Code não é do Right Point. Use o QR Code do local ou o da tela do professor.");
       return;
     }
     qrLido.current = true;

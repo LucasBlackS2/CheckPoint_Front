@@ -1,4 +1,4 @@
-# CheckPoint — App (React Native / Expo)
+# Right Point — App (React Native / Expo)
 
 App do **ponto eletrônico de estágio**. O aluno registra entrada e saída pelo
 celular, e a API confere se ele está no local do estágio usando o GPS.

@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "CheckPoint",
+    "name": "Right Point",
     "slug": "CheckPoint-Front",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -11,8 +11,8 @@
     "ios": {
       "supportsTablet": true,
       "infoPlist": {
-        "NSLocationWhenInUseUsageDescription": "O CheckPoint usa sua localização para confirmar que você está no local do estágio ao registrar o ponto.",
-        "NSCameraUsageDescription": "O CheckPoint usa a câmera para ler o QR Code do local do estágio e tirar a selfie que comprova sua presença."
+        "NSLocationWhenInUseUsageDescription": "O Right Point usa sua localização para confirmar que você está no local do estágio ao registrar o ponto.",
+        "NSCameraUsageDescription": "O Right Point usa a câmera para ler o QR Code do local do estágio e tirar a selfie que comprova sua presença."
       }
     },
     "android": {
@@ -42,14 +42,14 @@
       [
         "expo-camera",
         {
-          "cameraPermission": "O CheckPoint usa a câmera para ler o QR Code do local do estágio e tirar a selfie que comprova sua presença.",
+          "cameraPermission": "O Right Point usa a câmera para ler o QR Code do local do estágio e tirar a selfie que comprova sua presença.",
           "recordAudioAndroid": false
         }
       ],
       [
         "expo-location",
         {
-          "locationWhenInUsePermission": "O CheckPoint usa sua localização para confirmar que você está no local do estágio ao registrar o ponto."
+          "locationWhenInUsePermission": "O Right Point usa sua localização para confirmar que você está no local do estágio ao registrar o ponto."
         }
       ],
       [

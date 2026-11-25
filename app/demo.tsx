@@ -50,7 +50,7 @@ export default function Demonstracao() {
   return (
     <SafeAreaView style={estilos.tela}>
       <View style={estilos.conteudo}>
-        <Text style={estilos.titulo}>Conheça o CheckPoint</Text>
+        <Text style={estilos.titulo}>Conheça o Right Point</Text>
         <Text style={estilos.subtitulo}>
           Escolha um perfil. O app mostra, passo a passo e com destaque piscando, como cada função funciona — com
           dados de exemplo.
