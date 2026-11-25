@@ -3,6 +3,7 @@ import { StatusBar } from "expo-status-bar";
 import { useEffect } from "react";
 import { View } from "react-native";
 
+import { AberturaAnimada } from "@/components/AberturaAnimada";
 import { TourCartao } from "@/components/TourCartao";
 import { AuthProvider, useAuth } from "@/contexts/AuthContext";
 import { TourProvider } from "@/contexts/TourContext";
@@ -34,6 +35,7 @@ function ProtecaoDeRotas() {
     <View style={{ flex: 1 }}>
       <Stack screenOptions={{ headerShown: false }} />
       <TourCartao />
+      <AberturaAnimada />
     </View>
   );
 }
