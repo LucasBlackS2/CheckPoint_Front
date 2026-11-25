@@ -1,15 +1,19 @@
 {
   "expo": {
-    "name": "CheckPoint-Front",
+    "name": "CheckPoint",
     "slug": "CheckPoint-Front",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
     "scheme": "checkpointfront",
-    "userInterfaceStyle": "automatic",
+    "userInterfaceStyle": "light",
     "newArchEnabled": true,
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "infoPlist": {
+        "NSLocationWhenInUseUsageDescription": "O CheckPoint usa sua localização para confirmar que você está no local do estágio ao registrar o ponto.",
+        "NSCameraUsageDescription": "O CheckPoint usa a câmera para ler o QR Code do local do estágio e tirar a selfie que comprova sua presença."
+      }
     },
     "android": {
       "adaptiveIcon": {
@@ -19,7 +23,14 @@
         "monochromeImage": "./assets/images/android-icon-monochrome.png"
       },
       "edgeToEdgeEnabled": true,
-      "predictiveBackGestureEnabled": false
+      "predictiveBackGestureEnabled": false,
+      "permissions": [
+        "ACCESS_COARSE_LOCATION",
+        "ACCESS_FINE_LOCATION",
+        "CAMERA",
+        "ACCESS_WIFI_STATE",
+        "ACCESS_NETWORK_STATE"
+      ]
     },
     "web": {
       "output": "static",
@@ -27,6 +38,20 @@
     },
     "plugins": [
       "expo-router",
+      "expo-secure-store",
+      [
+        "expo-camera",
+        {
+          "cameraPermission": "O CheckPoint usa a câmera para ler o QR Code do local do estágio e tirar a selfie que comprova sua presença.",
+          "recordAudioAndroid": false
+        }
+      ],
+      [
+        "expo-location",
+        {
+          "locationWhenInUsePermission": "O CheckPoint usa sua localização para confirmar que você está no local do estágio ao registrar o ponto."
+        }
+      ],
       [
         "expo-splash-screen",
         {

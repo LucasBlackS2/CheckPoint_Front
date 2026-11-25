@@ -1,15 +1,6 @@
-import { Text, View } from "react-native";
+import { Carregando } from "@/components/ui";
 
-export default function Index() {
-  return (
-    <View
-      style={{
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
-      <Text>Edit app/index.tsx to edit this screen.</Text>
-    </View>
-  );
+// Tela inicial só mostra o carregamento; o _layout redireciona para o lugar certo.
+export default function Inicio() {
+  return <Carregando />;
 }

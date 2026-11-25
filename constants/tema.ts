@@ -1,0 +1,15 @@
+export const cores = {
+  primaria: "#1E5EFF",
+  primariaClara: "#E8EEFF",
+  fundo: "#F4F6FA",
+  cartao: "#FFFFFF",
+  texto: "#1B1F2A",
+  textoSuave: "#6B7280",
+  borda: "#E2E6EE",
+  sucesso: "#14A44D",
+  sucessoClaro: "#E6F6EC",
+  perigo: "#DC3545",
+  perigoClaro: "#FDECEE",
+  alerta: "#B7791F",
+  alertaClaro: "#FFF6E5",
+};
