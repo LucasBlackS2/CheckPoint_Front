@@ -7,6 +7,7 @@ import { Aviso, Botao, Campo, Cartao } from "@/components/ui";
 import { cores } from "@/constants/tema";
 import { useAuth } from "@/contexts/AuthContext";
 import { mensagemDeErro } from "@/services/api";
+import { somenteNumeros } from "@/utils/formatar";
 
 export default function Login() {
   const { entrar } = useAuth();
@@ -41,10 +42,11 @@ export default function Login() {
           <Campo
             rotulo="Matrícula"
             value={matricula}
-            onChangeText={setMatricula}
-            autoCapitalize="none"
+            onChangeText={(t) => setMatricula(somenteNumeros(t))}
+            keyboardType="number-pad"
+            maxLength={20}
             autoCorrect={false}
-            placeholder="Sua matrícula"
+            placeholder="Somente números"
           />
           <Campo
             rotulo="Senha"

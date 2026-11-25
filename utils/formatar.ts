@@ -1,3 +1,8 @@
+/** Matrícula só tem números: remove qualquer outro caractere digitado. */
+export function somenteNumeros(texto: string): string {
+  return texto.replace(/\D/g, "");
+}
+
 /** "2026-11-11" -> "11/11/2026" */
 export function formatarData(data: string | null | undefined): string {
   if (!data) return "—";

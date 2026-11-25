@@ -11,7 +11,7 @@ import { obterLocalizacaoAtual } from "@/services/localizacao";
 import { lerWifiAtual } from "@/services/rede";
 import { buscarCep } from "@/services/viacep";
 import type { Endereco, TipoUsuario, Usuario } from "@/types/api";
-import { NOME_PERFIL } from "@/utils/formatar";
+import { NOME_PERFIL, somenteNumeros } from "@/utils/formatar";
 
 type Aba = "usuario" | "endereco" | "contrato";
 type Mensagem = { tipo: "erro" | "sucesso"; texto: string } | null;
@@ -122,7 +122,14 @@ function FormUsuario() {
         />
       ) : null}
       <Campo rotulo="Nome completo" value={nome} onChangeText={setNome} />
-      <Campo rotulo="Matrícula" value={matricula} onChangeText={setMatricula} autoCapitalize="none" />
+      <Campo
+        rotulo="Matrícula (só números)"
+        value={matricula}
+        onChangeText={(t) => setMatricula(somenteNumeros(t))}
+        keyboardType="number-pad"
+        maxLength={20}
+        placeholder="Ex.: 01792982"
+      />
       <Campo rotulo="E-mail" value={email} onChangeText={setEmail} autoCapitalize="none" keyboardType="email-address" />
       <Campo rotulo="Senha inicial (mín. 6)" value={senha} onChangeText={setSenha} secureTextEntry />
       {tipo === "aluno" ? <Campo rotulo="Turma" value={turma} onChangeText={setTurma} /> : null}
@@ -132,7 +139,7 @@ function FormUsuario() {
         titulo="Cadastrar"
         aoPressionar={salvar}
         carregando={salvando}
-        desabilitado={!nome || !matricula || !email || senha.length < 6}
+        desabilitado={!nome || matricula.length < 4 || !email || senha.length < 6}
       />
     </Cartao>
   );
