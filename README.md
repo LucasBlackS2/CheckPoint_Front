@@ -45,7 +45,10 @@ Funciona junto com o back-end em Java: **CheckPoint-Back**.
    npx expo install expo-location expo-secure-store expo-camera @react-native-community/netinfo expo-keep-awake
    ```
 
-3. Copie `.env.example` para `.env` e coloque o endereço da API:
+3. **Endereço da API (opcional):** no celular com Expo Go, o app usa sozinho o IP do
+   computador que está rodando o `npx expo start`, na porta 8080 (o endereço
+   aparece embaixo da tela de login). Só precisa configurar se a API estiver em
+   outro computador — copie `.env.example` para `.env` e coloque:
 
    ```
    EXPO_PUBLIC_API_URL=http://192.168.0.10:8080

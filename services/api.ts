@@ -1,4 +1,5 @@
 import axios, { AxiosError } from "axios";
+import Constants from "expo-constants";
 import { Platform } from "react-native";
 
 import type {
@@ -15,13 +16,32 @@ import type {
   VerificacaoLocalizacao,
 } from "@/types/api";
 
+const PORTA_API = 8080;
+
 /**
- * Endereço do back-end. Configure no arquivo .env:
- *   EXPO_PUBLIC_API_URL=http://SEU_IP:8080
- * No celular físico use o IP do computador na rede (não "localhost").
- * No emulador Android use http://10.0.2.2:8080.
+ * Endereço do back-end.
+ * - Se EXPO_PUBLIC_API_URL (no .env) tiver um IP/domínio de verdade, usa ele.
+ * - No celular, "localhost" seria o próprio celular. Então, se o .env estiver vazio
+ *   ou com localhost, o app usa o IP do computador que está rodando o Expo
+ *   (o mesmo do QR Code do `npx expo start`) na porta 8080.
+ * - No navegador (expo web), localhost funciona normalmente.
  */
-export const API_URL = process.env.EXPO_PUBLIC_API_URL ?? "http://localhost:8080";
+function descobrirUrlDaApi(): string {
+  const configurada = process.env.EXPO_PUBLIC_API_URL?.trim();
+  const ehLocal = !configurada || /\/\/(localhost|127\.0\.0\.1)(:|\/|$)/.test(configurada);
+  if (configurada && !ehLocal) return configurada.replace(/\/+$/, "");
+
+  if (Platform.OS !== "web") {
+    // Ex.: "192.168.0.15:8081" -> "192.168.0.15"
+    const hostDoExpo = Constants.expoConfig?.hostUri?.split(":")[0];
+    if (hostDoExpo && !/\.exp\.direct$/.test(hostDoExpo)) {
+      return `http://${hostDoExpo}:${PORTA_API}`;
+    }
+  }
+  return configurada ?? `http://localhost:${PORTA_API}`;
+}
+
+export const API_URL = descobrirUrlDaApi();
 
 export const api = axios.create({ baseURL: API_URL, timeout: 15000 });
 
@@ -67,7 +87,7 @@ interface ErroApi {
 export function mensagemDeErro(erro: unknown): string {
   if (axios.isAxiosError(erro)) {
     if (!erro.response) {
-      return `Não foi possível conectar à API (${API_URL}). Verifique se o back-end está rodando e o EXPO_PUBLIC_API_URL.`;
+      return `Não foi possível conectar à API em ${API_URL}. Confira se o back-end está rodando, se o celular está no mesmo Wi-Fi do computador e se o firewall do Windows libera a porta ${PORTA_API}.`;
     }
     const dados = erro.response.data as ErroApi | undefined;
     if (dados?.campos) {

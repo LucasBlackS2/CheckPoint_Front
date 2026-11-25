@@ -6,7 +6,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { Aviso, Botao, Campo, Cartao } from "@/components/ui";
 import { cores } from "@/constants/tema";
 import { useAuth } from "@/contexts/AuthContext";
-import { mensagemDeErro } from "@/services/api";
+import { API_URL, mensagemDeErro } from "@/services/api";
 import { somenteNumeros } from "@/utils/formatar";
 
 export default function Login() {
@@ -64,6 +64,8 @@ export default function Login() {
           <Text style={estilos.demoTitulo}>Conhecer o app</Text>
           <Text style={estilos.demoTexto}>Modo demonstração: escolha aluno ou professor e veja tudo funcionando.</Text>
         </Pressable>
+
+        <Text style={estilos.servidor}>Servidor: {API_URL}</Text>
       </KeyboardAvoidingView>
     </SafeAreaView>
   );
@@ -86,4 +88,5 @@ const estilos = StyleSheet.create({
   },
   demoTitulo: { color: "#B45309", fontWeight: "800", fontSize: 16 },
   demoTexto: { color: cores.textoSuave, textAlign: "center" },
+  servidor: { color: cores.textoSuave, fontSize: 12, textAlign: "center" },
 });
